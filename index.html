@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de Licencias Oficial</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; text-align: center; background: #1a73e8; color: white; }
+        .box { background: white; color: #333; padding: 20px; border-radius: 15px; max-width: 400px; margin: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        #licencia { font-size: 20px; color: #1a73e8; font-weight: bold; margin-top: 15px; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h1>🔑 Creador de Llaves</h1>
+    <div class="box">
+        <p>Pega aquí el ID que te mandó el cliente:</p>
+        <input type="text" id="idCliente" placeholder="Ejemplo: 12345678">
+        <button onclick="generar()">Generar Licencia</button>
+        <div id="licencia"></div>
+    </div>
+
+    <script>
+        function generar() {
+            let id = document.getElementById('idCliente').value;
+            if(!id) return alert("Mete el ID del cliente");
+            
+            // Esta es la fórmula "secreta": invierte el ID y le suma un prefijo
+            // Tú puedes cambiar "PRO-" por lo que quieras
+            let clave = "PRO-" + id.split('').reverse().join('') + "-X" + (id.length * 7);
+            
+            document.getElementById('licencia').innerText = clave;
+        }
+    </script>
+</body>
+</html>
